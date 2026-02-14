@@ -1,22 +1,24 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSmiddleware
+from fastapi.middleware.cors import CORSMiddleware
 import requests
 import json
 from shapely.geometry import shape
 from fastapi.responses import JSONResponse
 app=FastAPI()
 app.add_middleware(
-    CORSmiddleware,
+    CORSMiddleware,
     allow_origins=["*"],
-    allow_credential=True,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
     )
 with open("Localidades.geo.json", "r", encoding="utf-8") as f:
     LOCALIDADES = json.load(f)
-@app.get("/buscar")
 
-def obtener_bbox_localidad(LocalidadSeleccionada):
+    
+@app.get("/getjson")
+
+def obtener_bbox_localidad(LocalidadSeleccionada:int):
     for feature in LOCALIDADES["features"]:
         if feature["properties"]["ID_LOCAL"] == LocalidadSeleccionada:
             polygon = shape(feature["geometry"])
