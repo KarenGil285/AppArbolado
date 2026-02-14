@@ -2,7 +2,7 @@ let url ="http://127.0.0.1:8000/Buscar"
 
 let myAPI = url + "?Localidad"
 
-document.getElementById("Buscar").addEventListener("click", function() {
+document.getElementById("getjson").addEventListener("click", function() {
 
     let localidadSeleccionada = Number(document.getElementById("Localidad").value)
 
