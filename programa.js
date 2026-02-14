@@ -15,7 +15,7 @@ document.getElementById("getjson").addEventListener("click", function() {
 
 function descargarGeoJSON(idLocalidad) {
 
-    fetch("http://127.0.0.1:8000/buscar?LocalidadSeleccionada=${idLocalidad}")
+    fetch("http://127.0.0.1:8000/getjson?LocalidadSeleccionada=${idLocalidad}")
         .then(response => response.blob())
         .then(blob => {
             const url = window.URL.createObjectURL(blob);
